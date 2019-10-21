@@ -1,20 +1,42 @@
-{% extends base.html.twig %}
-
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    {% block title %}
-    {% endblock %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}Twig{% endblock %}</title>
+    <link rel="icon" href="/assets/images/favicon.png">
     {% block stylesheet %}
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="/assets/css/styles.css">
     {% endblock %}
 </head>
-    <body>
-        <header>
-            {% block nav %}
-            {% endblock %}
-        </header>
-        {% block body %}
-        {% endblock %}
-    </body>
+
+<body>
+{% block nav %}
+    <nav>
+        <div class="container">
+            <div class="row">
+                <div class="col-2">Homepage</div>
+                <div class="col-2">Something Else</div>
+            </div>
+        </div>
+    </nav>
+{% endblock %}
+{% block body %}
+    <div class="container-fluid">
+        <div class="row">
+            {% for product in products %}
+                <div class="card" style="width: 18rem; margin: 7%;">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ product }}</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
+</body>
 </html>
